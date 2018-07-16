@@ -1,0 +1,233 @@
+<section>
+<h1>This is an html slideshow.</h1>
+<style>
+body {
+  margin: 0;
+  padding: 1em;
+  height: calc(100vh - 2em);
+  font-family: sans-serif;
+  overflow: auto;
+}
+
+section {
+  min-width: 100%;
+  min-height: 100%;
+}
+
+style, script {
+  display: block;
+  white-space: pre;
+  background: #eee;
+  color: #555;
+  padding: 0em 1em 0em 1em;
+}
+
+</style>
+
+<p>Use the spacebar or arrow keys to navigate.</p>
+</section>
+<section>
+<h1 id="quick-to-implement-in-javascript.">Quick to implement in javascript.</h1>
+<script>
+let currentSlide = 0
+
+function setSlide(slide) {
+  const sections = document.getElementsByTagName('section')
+  currentSlide = Math.min(Math.max(slide, 0), sections.length - 1)
+  Array.from(sections).forEach((section, index) => {
+    section.style.display = index === currentSlide ? null : 'none'
+  })
+}
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'ArrowRight' || event.key == ' ')
+    setSlide(currentSlide + 1);
+  if (event.key === 'ArrowLeft')
+    setSlide(currentSlide - 1);
+})
+
+document.addEventListener("DOMContentLoaded", () => setSlide(currentSlide))
+
+</script>
+</section>
+
+<section class="centered-section">
+  <h1 id="grid">Grid</h1>
+  <p>Css grid makes formatting slides easy. For example imagine you want content centered.</p>
+  <style>
+.centered-section {
+  display: grid;
+  place-content: center;
+}
+  </style>
+</section>
+<section class="complex-section">
+  <h1>Complex grid layout</h1>
+  <div class="text">
+    All the features of css grid are available.
+  </div>
+  <div class="purple" style="background: #a43b94;"></div>
+  <div class="blue" style="background: #4e49a2;"></div>
+  <div class="brown" style="background: #8e4c27;"></div>
+  <style>
+.complex-section {
+  display: grid;
+  grid-template-areas:
+    "css title title"
+    "css text brown"
+    "css blue brown"
+    "css purple purple";
+  grid-gap: 1em;
+  place-content: stretch;
+}
+.complex-section>* {
+  min-width: 16vw;
+  min-height: 16vh;
+  background: #ddd;
+  display: grid;
+  align-content: center;
+  padding-left: 1em;
+  margin: 0;
+}
+.complex-section>.text { grid-area: text; }
+.complex-section>style { grid-area: css; }
+.complex-section>h1 { grid-area: title; }
+.complex-section>.purple { grid-area: purple; }
+.complex-section>.blue { grid-area: blue; }
+.complex-section>.brown { grid-area: brown; }
+  </style>
+</section>
+
+<section>
+  <h1 id="images">Images</h1>
+  <p>Embed static images.</p>
+  <p>Don’t let images flow off screen like this:</p>
+  <img style="height: 200vh;" src="https://picsum.photos/500"></img>
+</section>
+
+<section class="centered-section sized-image">
+  <h1 id="sized-image">Sized image</h1>
+  <p>For responsivness, use vw and vh units to size your image.</p>
+  <img src="https://picsum.photos/500" />
+  <style>
+.sized-image>img {
+  height: 80vh;
+  grid-area: img;
+}
+.sized-image {
+  grid-auto-flow: row;
+  grid-gap: 1em;
+  grid-template:
+    ". img"
+    ". img"
+    ". img";
+}
+  </style>
+</section>
+
+<section class="grid-sized-image">
+  <h1 id="sized-image">Sized image</h1>
+  <p>Alternatively, pack the image into a streched grid.</p>
+  <style>
+.grid-sized-image>img {
+  grid-area: img;
+  height: 100%;
+  width: 100%;
+}
+.grid-sized-image>h1 { grid-area: h; }
+.grid-sized-image>p { grid-area: p; }
+.grid-sized-image>style { grid-area: s; }
+.grid-sized-image {
+  display: grid;
+  grid-gap: 1em;
+  grid-template:
+    "h img"
+    "p img"
+    "s img";
+}
+  </style>
+  <img src="https://picsum.photos/500" />
+</section>
+
+<section class="centered-section background-section">
+  <h1>Background images</h1>
+  <p>There are a few ways to apply background images to html slides. Here is a simple one.</p>
+  <style>
+.background-section {
+  background: url("https://picsum.photos/1000");
+  background-size: cover;
+}
+  </style>
+</section>
+
+
+<section class="centered-section background-section text-shadow">
+  <h1>Text border</h1>
+  <p>When using a background image, borders around letters may help readability.</p>
+  <style>
+.text-shadow > p, .text-shadow > h1 {
+  color: white;
+  text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+  </style>
+</section>
+
+
+<section class="centered-section">
+  <h1>Video</h1>
+  <p>Like powerpont, html presentaions can embed video.</p>
+  <iframe width="980" height="610" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+</section>
+
+<section class="centered-section">
+  <h1>Views of real time data</h1>
+  <p>Want to embed live data, easy.</p>
+  <iframe width="980" height="610" style="border: none;" srcdoc="
+    <!-- TradingView Widget BEGIN -->
+    <div class=&quot;tradingview-widget-container&quot;>
+      <div id=&quot;tradingview_ecb0f&quot;></div>
+      <div class=&quot;tradingview-widget-copyright&quot;>
+	<a href=&quot;https://www.tradingview.com/symbols/NASDAQ-AAPL/&quot; rel=&quot;noopener&quot; target=&quot;_blank&quot;>
+	  <span class=&quot;blue-text&quot;>AAPL chart</span>
+	</a>
+	by TradingView
+      </div>
+      <script type=&quot;text/javascript&quot; src=&quot;https://s3.tradingview.com/tv.js&quot;></script>
+      <script type=&quot;text/javascript&quot;>
+	new TradingView.widget({
+	  &quot;width&quot;: 970,
+	  &quot;height&quot;: 590,
+	  &quot;symbol&quot;: &quot;NASDAQ:AAPL&quot;,
+	  &quot;interval&quot;: &quot;D&quot;,
+	  &quot;timezone&quot;: &quot;Etc/UTC&quot;,
+	  &quot;theme&quot;: &quot;Light&quot;,
+	  &quot;style&quot;: &quot;1&quot;,
+	  &quot;locale&quot;: &quot;en&quot;,
+	  &quot;toolbar_bg&quot;: &quot;#f1f3f6&quot;,
+	  &quot;enable_publishing&quot;: false,
+	  &quot;allow_symbol_change&quot;: true,
+	  &quot;container_id&quot;: &quot;tradingview_ecb0f&quot;
+	});
+      </script>
+    </div>
+    <!-- TradingView Widget END -->
+  "></iframe>
+</section>
+
+<section class="centered-section">
+  <h1>Embed whatever you want.</h1>
+  <p>Want to show off some games?</p>
+  <iframe width="980" height="610" src="https://codeincomplete.com/games/tetris/"></iframe>
+  <i>game by: <a href="https://github.com/jakesgordon">github.com/jakesgordon</a></i>
+</section>
+
+<section class="centered-section">
+  <h1>End.</h1>
+</section>
+
+<!-- https://www.w3schools.com/howto/howto_js_slideshow.asp
+https://css-tricks.com/snippets/css/complete-guide-grid -->
