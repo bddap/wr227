@@ -21,5 +21,6 @@ htmls: $(HTMLS)
 publish: htmls
 	mkdir -p docs
 	cp build/*.html docs
+	cp ass3-slides.html docs/ass3-slides.html
 
 .PHONY: publish htmls pdfs
