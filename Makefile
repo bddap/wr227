@@ -1,6 +1,6 @@
 MDS=$(wildcard *.md)
 PDFS=$(addprefix build/,$(MDS:.md=.pdf))
-HTMLS=$(addprefix docs/,$(MDS:.md=.html))
+HTMLS=$(addprefix build/,$(MDS:.md=.html))
 
 
 build:
@@ -9,18 +9,17 @@ build:
 build/%.pdf: %.md build
 	pandoc $< -o $@ --variable=fontfamily:arev
 
-.PHONY: pdfs
-
 pdfs: $(PDFS)
 	:
 
-docs:
-	mkdir -p docs
-
-docs/%.html: %.md docs
-	pandoc $< -o $@
-
-.PHONY: htmls
+build/%.html: %.md build common.css
+	pandoc --include-in-header=common.css $< -o $@
 
 htmls: $(HTMLS)
 	:
+
+publish: htmls
+	mkdir -p docs
+	cp build/*.html docs
+
+.PHONY: publish htmls pdfs

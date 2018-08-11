@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# Generate docs before commit.
+
+make publish
+git add docs
