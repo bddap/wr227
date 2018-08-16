@@ -1,3 +1,3 @@
 # Automata Field
 
-**Automata Field** is a 2d Finite State grid implemetaion. A [double buffer](./Double-Buffer.html) is used to prevent race conditions between cells.
+Automata Field reprents a two dimensional grid of Atomata. A [double buffer](./Double-Buffer.html) is used to prevent race conditions between cells.

@@ -1,7 +1,7 @@
 # Program Stucture
 
-*TODO*: Mention programming language used?
+The Automata program is written in the rust programming language.
 
-*TODO*: Link to github project.
+Source code for the automata program may be found here: [https://github.com/bddap/automata](https://github.com/bddap/automata)
 
-The source code for Automata is separated into four modules. Main, Automata, Atomata Field, and Graphics.
+The program is separated into four files/modules. [Main](./Main.html), [Automata](./Automata.html), [Automata Field](./Automata-Field.html), and [Graphics](./Graphics.html).
