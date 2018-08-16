@@ -1,0 +1,376 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Using Game Programming Patterns</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">var path_to_root = "";</script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
+            if (theme === null || theme === undefined) { theme = 'light'; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <ol class="chapter"><li class="affix"><a href="preface.html">Preface</a></li><li><a href="Overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li><a href="Program-Stucture.html"><strong aria-hidden="true">2.</strong> Program Stucture</a></li><li><ol class="section"><li><a href="Main.html"><strong aria-hidden="true">2.1.</strong> Main</a></li><li><a href="Automata.html"><strong aria-hidden="true">2.2.</strong> Automata</a></li><li><a href="Automata-Field.html"><strong aria-hidden="true">2.3.</strong> Automata Field</a></li><li><a href="Graphics.html"><strong aria-hidden="true">2.4.</strong> Graphics</a></li></ol></li><li><a href="Patterns.html"><strong aria-hidden="true">3.</strong> Patterns</a></li><li><ol class="section"><li><a href="State.html"><strong aria-hidden="true">3.1.</strong> State</a></li><li><a href="Double-Buffer.html"><strong aria-hidden="true">3.2.</strong> Double Buffer</a></li><li><a href="Game-Loop.html"><strong aria-hidden="true">3.3.</strong> Game Loop</a></li><li><a href="Data-Locality.html"><strong aria-hidden="true">3.4.</strong> Data Locality</a></li><li><a href="Update-Method.html"><strong aria-hidden="true">3.5.</strong> Update Method</a></li></ol></li><li><a href="What-I-Learned.html"><strong aria-hidden="true">4.</strong> What I Learned</a></li><li class="affix"><a href="Works-Cited.html">Works Cited</a></li></ol>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light <span class="default">(default)</span></button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">Using Game Programming Patterns</h1> 
+
+                        <div class="right-buttons">
+                            <a href="print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <a class="header" href="#preface" id="preface"><h1>Preface</h1></a>
+<p>After reading the excellent book, &quot;Game Programming Patterns&quot; by Robert Nystrom, I created a toy program to experiment with concepts from the book.</p>
+<p>This report:</p>
+<ol>
+<li>Documents the project.</li>
+<li>Explains some patterns from Robert Nystrom's book, and details their use in the project.</li>
+</ol>
+<a class="header" href="#overview" id="overview"><h1>Overview</h1></a>
+<p>Automata, the program, is inspired by Conway's Game of Life. Both feature a 2d grid, on which Finite States are displayed as square cells. Each frame, cells on the grid are updated according a Finite State Machine. This appilcation of FSM's is often referred to as Cellular Automaton. Automata, the program, get's it's name from Cellular Automata.</p>
+<p>Automata differs from Conways Game of Life. While cells in Conways Game of Life may occupy one of two states. Automata's cells may occupy one of 521 states. In the section on <a href="#state">State</a>, we'll explore application of the State pattern in the program.</p>
+<p>Automata program in action:</p>
+<script src="https://asciinema.org/a/xlJ1V1STsW7k3VMDQwX0zj10C.js" id="asciicast-xlJ1V1STsW7k3VMDQwX0zj10C" async></script>
+<a class="header" href="#program-stucture" id="program-stucture"><h1>Program Stucture</h1></a>
+<p>The Automata program is written in the rust programming language.</p>
+<p>Source code for the automata program may be found here: <a href="https://github.com/bddap/automata">https://github.com/bddap/automata</a></p>
+<p>The program is separated into four files/modules. <a href="./Main.html">Main</a>, <a href="./Automata.html">Automata</a>, <a href="./Automata-Field.html">Automata Field</a>, and <a href="./Graphics.html">Graphics</a>.</p>
+<a class="header" href="#main" id="main"><h1>Main</h1></a>
+<p>Initializes an Automata Field and graphics. Runs a <a href="./Game-Loop.html">Game Loop</a> to <a href="./Update-Method.html">Update</a> Automata <a href="./State.html">States</a> and refresh graphics at a regular interval.</p>
+<a class="header" href="#automata" id="automata"><h1>Automata</h1></a>
+<p>Defines the core Finite State Machine. Game logic is implemented here.</p>
+<p>The term &quot;Automata&quot; is overloaded in this report. &quot;Automata&quot; may mean one of two things.</p>
+<ol>
+<li>The toy program which this report details.</li>
+<li>The data structure used to represent a cell on the Automata Field.</li>
+</ol>
+<p>Please use context to determine which meaning is intended.</p>
+<p>The Automata data structure is an enum defined thusly:</p>
+<pre><code class="language-rust ignore">pub enum Automata {
+    Redstone(u8),
+    Water(u8),
+    RedstoneBlock(),
+    GameOfLife(bool),
+    Air(),
+    Slug(Direction),
+    Slime(),
+}
+</code></pre>
+<p>Rust enums allow for associated data. <code>Redstone</code>, <code>Water</code>, <code>GameOfLife</code>, and <code>Slug</code> each include extra state: power, depth, active, and direction of movement respectively.</p>
+<p><strong>Redstone</strong> is inspired by, and behaves somewhat similarly to, Minecraft's <a href="https://minecraft.gamepedia.com/g00/Redstone">voxel</a> of the same name.</p>
+<p><strong>Water</strong> flows over neigboring blocks.</p>
+<p><strong>RedstoneBlock</strong> provides redstone power.</p>
+<p><strong>GameOfLife</strong> transforms into a redstone block when powered.</p>
+<p><strong>Air</strong> does nothing.</p>
+<p><strong>Slug</strong> travels accross the grid.</p>
+<p><strong>Slime</strong> is left in a trail behind Slugs.</p>
+<a class="header" href="#automata-field" id="automata-field"><h1>Automata Field</h1></a>
+<p>Automata Field reprents a two dimensional grid of Atomata. A <a href="./Double-Buffer.html">double buffer</a> is used to prevent race conditions between cells.</p>
+<a class="header" href="#graphics" id="graphics"><h1>Graphics</h1></a>
+<p>Graphics prints colored squares to the terminal as part of the <a href="./Game-Loop.html">Game Loop</a>. Terminal graphics are employed to simplify development (no windowing libraries necessary).</p>
+<a class="header" href="#patterns" id="patterns"><h1>Patterns</h1></a>
+<p>Five patterns from &quot;Game Programming Patterns&quot; were employed when writing the Automata program.</p>
+<ul>
+<li><a href="./State.html">State</a></li>
+<li><a href="./Double-Buffer.html">Double Buffer</a></li>
+<li><a href="./Game-Loop.html">Game Loop</a></li>
+<li><a href="./Data-Locality.html">Data Locality</a></li>
+<li><a href="./Update-Method.html">Update Method</a></li>
+</ul>
+<a class="header" href="#state" id="state"><h1>State</h1></a>
+<p>Game Programming Pattern's chapter on state teaches us how to use finite state automata to manage the behaviour of in-game objects such as player characters or NPCs.</p>
+<p>Modeling behavours as FSMs makes game code less verbose, and makes behavour much easier to reason about.</p>
+<p>The book gives an example of how state machines can save a game from bugs--translated into rust.</p>
+<pre><code class="language-rust ignore">enum Input {
+    PressB,
+    PressDown,
+    ReleaseDown,
+}
+
+...
+
+fn handleInput(&amp;mut self, input: Input) {
+    match input {
+        PressB =&gt; self.jump(),
+        PressDown =&gt; if !self.isJumping {
+            self.setGraphics(Ducking)
+        },
+        ReleaseDown =&gt; self.setGraphics(Standing),
+    }
+}
+</code></pre>
+<p>The bug in the above program occurs when someone presses B in mid-air. The above, non-FSM code will allow jumps even when the player is in the air.</p>
+<p>Here is an example of the state pattern in action:</p>
+<pre><code class="language-rust ignore">enum PlayerState {
+    Standing,
+    Jumping,
+    Ducking,
+    Diving
+}
+
+...
+
+pub fn handleInput(&amp;mut self, input: Input) {
+    self.state = match (self.state, input) {
+        (Standing, PressB) =&gt; (
+            self.velocity.y = 1.0;
+            Jumping
+        ),
+        (Standing, PressDown) =&gt; Ducking,
+        (Ducking, ReleaseDown) =&gt; Standing,
+        (s, _) =&gt; s,
+    }
+}
+</code></pre>
+<p>While the bug is avoidable without a state machine, it's much easier to catch when using the the State pattern.</p>
+<p>Automata uses the State pattern to model cell behavour. In fact, cell behavior is completly defined as a single state machine. Automata's state machine is described as a function called <code>next_middle</code>. <code>next_middle</code> takes the surrounding cell states as input, and returns the next state of the middle cell.</p>
+<pre><code class="language-rust ignore">pub fn next_middle(surroundings: Surroundings) -&gt; Automata {
+    if let Some(next) = surroundings.infliction_requested() {
+        return next;
+    }
+
+    match surroundings.middle {
+        Water(0) =&gt; Air(),                           // No water =&gt; Air
+        Water(wetness) =&gt; Water(wetness.max(1) - 1), // Water drains over time
+        Redstone(pow) =&gt; Redstone(pow.max(1) - 1),   // Unpowered redstone goes dark
+        Slug(_) =&gt; Slime(),                          // Slugs leave a trail of slime
+        a =&gt; a,                                      // Everything else stays the same
+    }
+}
+</code></pre>
+<p>Cells may only modify themselves. This limitation reduces race conditions, but imposes a limitation on Automata. Namely, how does one Automata impose a change on it's neighbor? Consider the state:</p>
+<pre><code>Slug(Direction)
+</code></pre>
+<p>We want this slug to crawl over every Automata in it's path. In other words, every state update, the slug needs to turn the automata it faces into a slug, and turn itself into slime. This is where the <code>infliction_requested()</code> method comes in. <code>infliction_requested()</code> asks each surrounding automata, &quot;Do you want to change me?&quot;, if any answer yes, the middle automata accepts the state given.</p>
+<p><code>infliction_requested()</code> calls <code>inflict()</code> on each surrounding Automata to find out wether a change of state is requested. Here how the slug destroys all in it's path:</p>
+<pre><code class="language-rust ignore">fn inflict(&amp;self, other: Self, direction: Direction) -&gt; Option&lt;Self&gt; {
+    match self {
+        ...
+        Slug(slug_direction) =&gt; if slug_direction == direction {
+            Some(Slug(slug_direction))
+        } else {
+            None
+        },
+        ...
+    }
+}
+</code></pre>
+<p>When neighboring Atomata request an infliction, one of the inflictions is choosen using a deterministic set of rules. The rules are essentially a ranking system, the requested state with the highest rank is selected. Here's what happens when two slugs collide.</p>
+<pre><code>fn resolve_infliction(&amp;self, other: Self) -&gt; Self {
+    match (*self, other) {
+        (Slug(_), Slug(_)) =&gt; Slime(),
+        ...
+    }
+}
+</code></pre>
+<p>They splat, turning into slime.</p>
+<a class="header" href="#double-buffer" id="double-buffer"><h1>Double Buffer</h1></a>
+<p>Double buffers commonly serve one of two purposes:</p>
+<ol>
+<li>Prevent presentaion of state while it is being mutated.</li>
+<li>Prevent race conditions while mutating state.</li>
+</ol>
+<p>The Automata program uses A double buffer for the latter.</p>
+<p>A double buffer holds two copies of some data, primary and secondary. One copy is mutated, while the other copy is used for something else.</p>
+<p>In our case, the double buffer represents a grid of automata. Automata do not mutate thier own state. Instead, they return a new Autoamta which is then written to a secondary buffer. While game state is updating, the primary buffer is input, and the secondary is output. Each game tick, the primary and secondary buffers are swapped.</p>
+<a class="header" href="#game-loop" id="game-loop"><h1>Game Loop</h1></a>
+<p>The Automata program employs a naive game loop.</p>
+<ol>
+<li>State is updated.</li>
+<li>Game is rendered to the user.</li>
+<li>Process is repeated.</li>
+</ol>
+<a class="header" href="#data-locality" id="data-locality"><h1>Data Locality</h1></a>
+<p>Data locality is a performace optimization. Avoid unpredictable memory access and your processor will thank you with a speed boost. Keeping your game state in a contigous region of memory can increase performance significantly.</p>
+<p>The automata program definately does not need any performance optimisation; it runs far faster than needed. That said, the program does benefit from data locality. Game state is stored directly in a pair of standard vectors. Only two heap allocated structures are are used to store the automata grid.</p>
+<p>Dynamic dispatch is also avoided. Enums an switch statments are used in place of virtual classes.</p>
+<a class="header" href="#update-method" id="update-method"><h1>Update Method</h1></a>
+<p>Automata Field has an update method which is called each frame. It's called <code>tick()</code>, but it does the same thing.</p>
+<pre><code class="language-rust ignore">pub fn tick(&amp;mut self) {
+    for x in 0..self.width {
+        for y in 0..self.height {
+            self.field_alternate[y as usize * self.width as usize + x as usize] = 
+                next_middle(self.surroundings_for(x, y))
+        }
+    }
+    mem::swap(&amp;mut self.field, &amp;mut self.field_alternate);
+}
+</code></pre>
+<p><code>tick()</code> computes the next game state, writing the results to a secondary buffer, then swaps secondary and primary buffers according to the double buffer pattern.</p>
+<a class="header" href="#what-i-learned" id="what-i-learned"><h1>What I Learned</h1></a>
+<p>Rust is a really nice language to work with. The rust compiler is a mentor, strict but kind, always trying nudging you in the right direction.</p>
+<p>While cleverness should often be avoided in programming, sometimes the reduction of complexity code provides make cleverness worthwhile.</p>
+<p>Research best practices and defacto standards before inventing your own solutions. Lots of other people probably grappled with similar problems in the past, and you will likely find a more elegant, time tested solution.</p>
+<p>I learned how to make videogames! And maintainable ones at that.</p>
+<a class="header" href="#works-cited" id="works-cited"><h1>Works Cited</h1></a>
+<p>Nystrom, Robert. Game Programming Patterns. Self Published, 2014. <a href="http://gameprogrammingpatterns.com/">gameprogrammingpatterns.com</a></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+        
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+        
+        
+
+    </body>
+</html>

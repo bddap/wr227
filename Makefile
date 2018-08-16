@@ -18,9 +18,13 @@ build/%.html: %.md build common.css
 htmls: $(HTMLS)
 	:
 
-publish: htmls
+final:
+	cd final && mdbook build
+
+publish: htmls final
 	mkdir -p docs
 	cp build/*.html docs
 	cp ass3-slides.html docs/ass3-slides.html
+	cp -r final/book docs/final
 
-.PHONY: publish htmls pdfs
+.PHONY: publish htmls pdfs final
