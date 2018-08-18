@@ -1,4 +1,4 @@
-# Program Stucture
+# Program Structure
 
 The Automata program is written in the rust programming language.
 

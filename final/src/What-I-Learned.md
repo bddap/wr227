@@ -6,4 +6,4 @@ While cleverness should often be avoided in programming, sometimes the reduction
 
 Research best practices and defacto standards before inventing your own solutions. Lots of other people probably grappled with similar problems in the past, and you will likely find a more elegant, time tested solution.
 
-I learned how to make videogames! And maintainable ones at that.
+I learned how to make video games! And maintainable ones at that.

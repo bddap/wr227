@@ -4,5 +4,5 @@ After reading the excellent book, "Game Programming Patterns" by Robert Nystrom,
 
 This report: 
 
-1. Documents the project.
-2. Explains some patterns from Robert Nystrom's book, and details their use in the project.
+1. Documents the inner workings of the toy program.
+2. Explains some patterns from Robert Nystrom's book and details their use in the program.

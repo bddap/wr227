@@ -27,7 +27,7 @@ Rust enums allow for associated data. `Redstone`, `Water`, `GameOfLife`, and `Sl
 
 **Redstone** is inspired by, and behaves somewhat similarly to, Minecraft's [voxel](https://minecraft.gamepedia.com/g00/Redstone) of the same name.
 
-**Water** flows over neigboring blocks.
+**Water** flows over neighboring blocks.
 
 **RedstoneBlock** provides redstone power.
 
@@ -35,6 +35,6 @@ Rust enums allow for associated data. `Redstone`, `Water`, `GameOfLife`, and `Sl
 
 **Air** does nothing.
 
-**Slug** travels accross the grid.
+**Slug** travels across the grid.
 
 **Slime** is left in a trail behind Slugs.

@@ -1,9 +1,9 @@
 # Summary
 
-[Preface](./preface.md)
+[Preface](./Preface.md)
 
 - [Overview](./Overview.md)
-- [Program Stucture](./Program-Stucture.md)
+- [Program Structure](./Program-Structure.md)
   - [Main](./Main.md)
   - [Automata](./Automata.md)
   - [Automata Field](./Automata-Field.md)

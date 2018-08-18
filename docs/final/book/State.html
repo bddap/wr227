@@ -1,0 +1,286 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>State - Using Game Programming Patterns</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">var path_to_root = "";</script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
+            if (theme === null || theme === undefined) { theme = 'light'; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <ol class="chapter"><li class="affix"><a href="Preface.html">Preface</a></li><li><a href="Overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li><a href="Program-Structure.html"><strong aria-hidden="true">2.</strong> Program Structure</a></li><li><ol class="section"><li><a href="Main.html"><strong aria-hidden="true">2.1.</strong> Main</a></li><li><a href="Automata.html"><strong aria-hidden="true">2.2.</strong> Automata</a></li><li><a href="Automata-Field.html"><strong aria-hidden="true">2.3.</strong> Automata Field</a></li><li><a href="Graphics.html"><strong aria-hidden="true">2.4.</strong> Graphics</a></li></ol></li><li><a href="Patterns.html"><strong aria-hidden="true">3.</strong> Patterns</a></li><li><ol class="section"><li><a href="State.html" class="active"><strong aria-hidden="true">3.1.</strong> State</a></li><li><a href="Double-Buffer.html"><strong aria-hidden="true">3.2.</strong> Double Buffer</a></li><li><a href="Game-Loop.html"><strong aria-hidden="true">3.3.</strong> Game Loop</a></li><li><a href="Data-Locality.html"><strong aria-hidden="true">3.4.</strong> Data Locality</a></li><li><a href="Update-Method.html"><strong aria-hidden="true">3.5.</strong> Update Method</a></li></ol></li><li><a href="What-I-Learned.html"><strong aria-hidden="true">4.</strong> What I Learned</a></li><li class="affix"><a href="Works-Cited.html">Works Cited</a></li></ol>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light <span class="default">(default)</span></button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">Using Game Programming Patterns</h1> 
+
+                        <div class="right-buttons">
+                            <a href="print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <a class="header" href="#state" id="state"><h1>State</h1></a>
+<p>Game Programming Pattern's chapter on state teaches us how to use finite state automata to manage the behavior of in-game objects such as player characters or NPCs.</p>
+<p>Modeling behaviors as FSMs makes game code less verbose, and makes a much easier to reason about.</p>
+<p>The book gives an example of how state machines can save a game from bugs--translated into rust.</p>
+<pre><code class="language-rust ignore">enum Input {
+    PressB,
+    PressDown,
+    ReleaseDown,
+}
+
+...
+
+fn handleInput(&amp;mut self, input: Input) {
+    match input {
+        PressB =&gt; self.jump(),
+        PressDown =&gt; if !self.isJumping {
+            self.setGraphics(Ducking)
+        },
+        ReleaseDown =&gt; self.setGraphics(Standing),
+    }
+}
+</code></pre>
+<p>The bug in the above program occurs when someone presses B in mid-air. The above, non-FSM code will allow jumps even when the player is in the air.</p>
+<p>Here is an example of the state pattern in action:</p>
+<pre><code class="language-rust ignore">enum PlayerState {
+    Standing,
+    Jumping,
+    Ducking,
+    Diving
+}
+
+...
+
+pub fn handleInput(&amp;mut self, input: Input) {
+    self.state = match (self.state, input) {
+        (Standing, PressB) =&gt; (
+            self.velocity.y = 1.0;
+            Jumping
+        ),
+        (Standing, PressDown) =&gt; Ducking,
+        (Ducking, ReleaseDown) =&gt; Standing,
+        (s, _) =&gt; s,
+    }
+}
+</code></pre>
+<p>While the bug is avoidable without a state machine, it's much easier to catch when using the the State pattern.</p>
+<p>Automata uses the State pattern to model cell behavior. In fact, cell behavior is completely defined as a single state machine. Automata's state machine is described as a function called <code>next_middle</code>. <code>next_middle</code> takes the surrounding cell states as input, and returns the next state of the middle cell.</p>
+<pre><code class="language-rust ignore">pub fn next_middle(surroundings: Surroundings) -&gt; Automata {
+    if let Some(next) = surroundings.infliction_requested() {
+        return next;
+    }
+
+    match surroundings.middle {
+        Water(0) =&gt; Air(),                           // No water =&gt; Air
+        Water(wetness) =&gt; Water(wetness.max(1) - 1), // Water drains over time
+        Redstone(pow) =&gt; Redstone(pow.max(1) - 1),   // Unpowered redstone goes dark
+        Slug(_) =&gt; Slime(),                          // Slugs leave a trail of slime
+        a =&gt; a,                                      // Everything else stays the same
+    }
+}
+</code></pre>
+<p>Cells may only modify themselves. This limitation reduces race conditions, but imposes a limitation on Automata. Namely, how does one Automata impose a change on it's neighbor? Consider the state:</p>
+<pre><code>Slug(Direction)
+</code></pre>
+<p>We want this slug to crawl over every Automata in it's path. In other words, every state update, the slug needs to turn the automata it faces into a slug, and turn itself into slime. This is where the <code>infliction_requested()</code> method comes in. <code>infliction_requested()</code> asks each surrounding automata, &quot;Do you want to change me?&quot;, if any answer yes, the middle automata accepts the state given.</p>
+<p><code>infliction_requested()</code> calls <code>inflict()</code> on each surrounding Automata to find out whether a change of state is requested. Here how the slug destroys all in it's path:</p>
+<pre><code class="language-rust ignore">fn inflict(&amp;self, other: Self, direction: Direction) -&gt; Option&lt;Self&gt; {
+    match self {
+        ...
+        Slug(slug_direction) =&gt; if slug_direction == direction {
+            Some(Slug(slug_direction))
+        } else {
+            None
+        },
+        ...
+    }
+}
+</code></pre>
+<p>When neighboring Automata request an infliction, one of the inflictions is chosen using a deterministic set of rules. The rules are essentially a ranking system, the requested state with the highest rank is selected. Here's what happens when two slugs collide.</p>
+<pre><code>fn resolve_infliction(&amp;self, other: Self) -&gt; Self {
+    match (*self, other) {
+        (Slug(_), Slug(_)) =&gt; Slime(),
+        ...
+    }
+}
+</code></pre>
+<p>They splat, turning into slime.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="Patterns.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="Double-Buffer.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="Patterns.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="Double-Buffer.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
